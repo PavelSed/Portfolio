@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# Импортируем статику
+from django.conf.urls.static import static
+# Передает наши настройки из файла settings
+from django.conf import settings
+# !Импортируем views из портфолио
+from portfolio import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name='home')
+    # Перенаправляем запрос в 'blog.urls'
+    path('blog/', include('blog.urls'))
 ]
+
+# Добавляем директории из setting в urlpatterns. document_root - конкретный каталог
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Project # Импортируем созданную модель
 
-# Register your models here.
+# Регистрирует модель
+admin.site.register(Project)
+
+
