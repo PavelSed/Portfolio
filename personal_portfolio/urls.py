@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include # Добавляем к path include
 # Импортируем статику
 from django.conf.urls.static import static
 # Передает наши настройки из файла settings
@@ -24,9 +24,9 @@ from portfolio import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home')
+    path('', views.home, name='home'),
     # Перенаправляем запрос в 'blog.urls'
-    path('blog/', include('blog.urls'))
+    path('blog/', include('blog.urls')),
 ]
 
 # Добавляем директории из setting в urlpatterns. document_root - конкретный каталог

@@ -1,5 +1,11 @@
 <h1>Pavel's Protfolio</h1>
 
+{% load static %}
+
+<a href="{% static 'portfolio/resume.pdf' %}">Resume</a>
+
+<img src="{% static 'portfolio/SquareBlonde.jpg' %}" alt="">
+
 {#Синтаксис джанго для работы с шаблонами#}
 {% for project in projects  %}
 
