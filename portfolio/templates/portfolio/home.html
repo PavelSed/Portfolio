@@ -1,19 +1,40 @@
-<h1>Pavel's Protfolio</h1>
+{% extends "portfolio/base.html" %}
 
 {% load static %}
 
-<a href="{% static 'portfolio/resume.pdf' %}">Resume</a>
+{% block content %}
 
-<img src="{% static 'portfolio/SquareBlonde.jpg' %}" alt="">
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'portfolio/cat.jpg' %}" class="img-fluid">
+  </div>
+</div>
 
-{#Синтаксис джанго для работы с шаблонами#}
-{% for project in projects  %}
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">The neighborhood of Tula was irrigated by the roar of the thunder of future changes. 😊</h1>
+  </div>
+</div>
 
-    <h2>{{ project.title }}</h2>
-    <p>{{ project.description }}</p>
-    <img src="{{ project.image.url }}" alt="">
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
+
     {% if project.url %}
-        <br><a href="{{ project.url }}">Link</a>
-    {% endif %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
 
-{% endfor %}
+    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
